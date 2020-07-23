@@ -34,46 +34,19 @@ class _InputPageState extends State<InputPage> {
                   children: <Widget>[
                     Expanded(
                       child: ReusableCard(
-                          color: cardColor,
-                          cardChild: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                FontAwesomeIcons.mars,
-                                size: 80.0,
-                              ),
-                              SizedBox(
-                                height: 15.0,
-                              ),
-                              Text('MALE',
-                                  style: TextStyle(
-                                    fontSize: 23.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ],
-                          )),
+                        color: cardColor,
+                        cardChild: IconContent(
+                          icon: FontAwesomeIcons.mars,
+                          label: 'MALE',
+                        ),
+                      ),
                     ),
                     Expanded(
                       child: ReusableCard(
                         color: cardColor,
-                        cardChild: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              FontAwesomeIcons.venus,
-                              size: 80.0,
-                            ),
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                            Text('FEMALE',
-                                style: TextStyle(
-                                  fontSize: 23.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                          ],
+                        cardChild: IconContent(
+                          icon: FontAwesomeIcons.venus,
+                          label: 'FEMALE',
                         ),
                       ),
                     ),
@@ -108,6 +81,33 @@ class _InputPageState extends State<InputPage> {
               ],
             )),
       ),
+    );
+  }
+}
+
+class IconContent extends StatelessWidget {
+  IconContent({this.icon, this.label});
+  final IconData icon;
+  final String label;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          icon,
+          size: 80.0,
+        ),
+        SizedBox(
+          height: 15.0,
+        ),
+        Text(label,
+            style: TextStyle(
+              fontSize: 23.0,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            )),
+      ],
     );
   }
 }
