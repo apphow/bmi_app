@@ -34,8 +34,25 @@ class _InputPageState extends State<InputPage> {
                   children: <Widget>[
                     Expanded(
                       child: ReusableCard(
-                        color: cardColor,
-                      ),
+                          color: cardColor,
+                          cardChild: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                FontAwesomeIcons.mars,
+                                size: 80.0,
+                              ),
+                              SizedBox(
+                                height: 15.0,
+                              ),
+                              Text('MALE',
+                                  style: TextStyle(
+                                    fontSize: 23.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                            ],
+                          )),
                     ),
                     Expanded(
                       child: ReusableCard(
