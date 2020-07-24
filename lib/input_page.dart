@@ -34,6 +34,7 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             body: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Expanded(
                   child: Row(
@@ -77,8 +78,24 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                       color: kActiveCardColor,
                       cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text('HEIGHT'),
+                          Text(
+                            'HEIGHT',
+                            style: kLabelTextStyle,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  '180',
+                                  style: kNumberTextStyle,
+                                ),
+                                Text(
+                                  'lbs',
+                                  style: kLabelTextStyle,
+                                ),
+                              ]),
                         ],
                       )),
                 ),
