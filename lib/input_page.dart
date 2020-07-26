@@ -17,7 +17,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
-  int height = 100;
+  int weight = 100;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,7 @@ class _InputPageState extends State<InputPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            'HEIGHT',
+                            'WEIGHT',
                             style: kLabelTextStyle,
                           ),
                           Row(
@@ -91,7 +91,7 @@ class _InputPageState extends State<InputPage> {
                             textBaseline: TextBaseline.alphabetic,
                             children: <Widget>[
                               Text(
-                                height.toString(),
+                                weight.toString(),
                                 style: kNumberTextStyle,
                               ),
                               Text(
@@ -100,17 +100,25 @@ class _InputPageState extends State<InputPage> {
                               ),
                             ],
                           ),
-                          Slider(
-                            value: height.toDouble(),
-                            min: 100.0,
-                            max: 284.0,
-                            activeColor: Colors.blueGrey[600],
-                            inactiveColor: Colors.blueGrey[200],
-                            onChanged: (double newValue) {
-                              setState(() {
-                                height = newValue.round();
-                              });
-                            },
+                          SliderTheme(
+                            data: SliderTheme.of(context).copyWith(
+                                activeTrackColor: Colors.blueGrey[700],
+                                thumbShape: RoundSliderThumbShape(
+                                    enabledThumbRadius: 15.0),
+                                overlayShape: RoundSliderOverlayShape(
+                                    overlayRadius: 30.0)),
+                            child: Slider(
+                              value: weight.toDouble(),
+                              min: 100.0,
+                              max: 284.0,
+                              activeColor: Colors.blueGrey[600],
+                              inactiveColor: Colors.blueGrey[200],
+                              onChanged: (double newValue) {
+                                setState(() {
+                                  weight = newValue.round();
+                                });
+                              },
+                            ),
                           )
                         ],
                       )),
