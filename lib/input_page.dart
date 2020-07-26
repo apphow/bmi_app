@@ -18,6 +18,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int weight = 100;
+  int height = 50;
 
   @override
   Widget build(BuildContext context) {
@@ -77,69 +78,93 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
-                      color: kActiveCardColor,
-                      cardChild: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            'WEIGHT',
-                            style: kLabelTextStyle,
+                    color: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: <Widget>[
+                            Text(
+                              weight.toString(),
+                              style: kNumberTextStyle,
+                            ),
+                            Text(
+                              'lbs',
+                              style: kLabelTextStyle,
+                            ),
+                          ],
+                        ),
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                              inactiveTrackColor: Colors.blueGrey[200],
+                              activeTrackColor: Colors.blueGrey[600],
+                              thumbColor: Colors.blueGrey[500],
+                              overlayColor: Color.fromRGBO(250, 250, 250, .40),
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 13.0),
+                              overlayShape:
+                                  RoundSliderOverlayShape(overlayRadius: 16.0)),
+                          child: Slider(
+                            value: weight.toDouble(),
+                            min: 100.0,
+                            max: 284.0,
+                            onChanged: (double newValue) {
+                              setState(() {
+                                weight = newValue.round();
+                              });
+                            },
                           ),
-                          Row(
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: ReusableCard(
+                          color: kActiveCardColor,
+                          cardChild: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
-                            textBaseline: TextBaseline.alphabetic,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                weight.toString(),
-                                style: kNumberTextStyle,
+                                'Height in Inches',
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                ),
                               ),
-                              Text(
-                                'lbs',
-                                style: kLabelTextStyle,
+                              Text(height.toString(), style: kNumberTextStyle),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  RoundIconButton(icon: FontAwesomeIcons.minus),
+                                  SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  RoundIconButton(icon: FontAwesomeIcons.plus),
+                                ],
                               ),
                             ],
                           ),
-                          SliderTheme(
-                            data: SliderTheme.of(context).copyWith(
-                                inactiveTrackColor: Colors.blueGrey[200],
-                                activeTrackColor: Colors.blueGrey[600],
-                                thumbColor: Colors.blueGrey[500],
-                                overlayColor:
-                                    Color.fromRGBO(250, 250, 250, .40),
-                                thumbShape: RoundSliderThumbShape(
-                                    enabledThumbRadius: 13.0),
-                                overlayShape: RoundSliderOverlayShape(
-                                    overlayRadius: 16.0)),
-                            child: Slider(
-                              value: weight.toDouble(),
-                              min: 100.0,
-                              max: 284.0,
-                              onChanged: (double newValue) {
-                                setState(() {
-                                  weight = newValue.round();
-                                });
-                              },
-                            ),
-                          )
-                        ],
-                      )),
+                        ),
+                      ),
+                      Expanded(
+                        child: ReusableCard(
+                          color: kActiveCardColor,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Expanded(
-                    child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: ReusableCard(
-                        color: kActiveCardColor,
-                      ),
-                    ),
-                    Expanded(
-                      child: ReusableCard(
-                        color: kActiveCardColor,
-                      ),
-                    ),
-                  ],
-                )),
                 Container(
                   color: Colors.blueGrey[800],
                   margin: EdgeInsets.only(top: 10.0),
@@ -149,6 +174,26 @@ class _InputPageState extends State<InputPage> {
               ],
             )),
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({this.icon});
+
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon),
+      onPressed: () {},
+      elevation: 10.0,
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Colors.blueGrey[600],
     );
   }
 }
