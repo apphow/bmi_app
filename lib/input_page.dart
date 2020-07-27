@@ -19,6 +19,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int weight = 100;
   int height = 50;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -173,6 +174,42 @@ class _InputPageState extends State<InputPage> {
                       Expanded(
                         child: ReusableCard(
                           color: kActiveCardColor,
+                          cardChild: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                'Age',
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                ),
+                              ),
+                              Text(age.toString(), style: kNumberTextStyle),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  RoundIconButton(
+                                      icon: FontAwesomeIcons.minus,
+                                      onPressed: () {
+                                        setState(() {
+                                          age--;
+                                        });
+                                      }),
+                                  SizedBox(
+                                    width: 10.0,
+                                  ),
+                                  RoundIconButton(
+                                    icon: FontAwesomeIcons.plus,
+                                    onPressed: () {
+                                      setState(() {
+                                        age++;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
