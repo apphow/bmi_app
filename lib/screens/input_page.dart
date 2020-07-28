@@ -22,13 +22,13 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int weight = 100;
-  int height = 50;
+  int height = 68;
   int age = 33;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[500],
+      backgroundColor: Colors.blueGrey[300],
       appBar: AppBar(
         centerTitle: true,
         title: Center(
@@ -106,14 +106,14 @@ class _InputPageState extends State<InputPage> {
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      inactiveTrackColor: Colors.blueGrey[200],
-                      activeTrackColor: Colors.blueGrey[600],
-                      thumbColor: Colors.blueGrey[500],
-                      overlayColor: Color.fromRGBO(250, 250, 250, .40),
+                      inactiveTrackColor: Colors.blueGrey[800],
+                      activeTrackColor: Colors.white,
+                      thumbColor: Colors.white,
+                      overlayColor: Colors.grey,
                       thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 13.0),
+                          RoundSliderThumbShape(enabledThumbRadius: 18.0),
                       overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 16.0),
+                          RoundSliderOverlayShape(overlayRadius: 21.0),
                     ),
                     child: Slider(
                       value: weight.toDouble(),
@@ -241,12 +241,6 @@ class _InputPageState extends State<InputPage> {
                 ),
               );
             },
-          ),
-          Container(
-            color: Colors.blueGrey[800],
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: kBottomContainerHeight,
           ),
         ],
       ),

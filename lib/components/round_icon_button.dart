@@ -6,6 +6,7 @@ class RoundIconButton extends StatelessWidget {
 
   final IconData icon;
   final Function onPressed;
+
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
@@ -17,7 +18,7 @@ class RoundIconButton extends StatelessWidget {
         height: 56.0,
       ),
       shape: CircleBorder(),
-      fillColor: Colors.blueGrey[600],
+      fillColor: Colors.blueGrey[700],
     );
   }
 }

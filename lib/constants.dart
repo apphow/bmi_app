@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 const kBottomContainerHeight = 80.0;
-const kActiveCardColor = Colors.blueGrey;
 const kBottomContainerColor = Colors.blueGrey;
-const kInactiveCardColor = Colors.blue;
+const kActiveCardColor = Color(0xFF546E7A);
+const kInactiveCardColor = Color(0xFF78909C);
 
 const kLabelTextStyle = TextStyle(
   fontSize: 23.0,
@@ -28,7 +28,7 @@ const kTitleTextStyle = TextStyle(
 
 const kResultTextStyle = TextStyle(
   color: Colors.red,
-  fontSize: 22.0,
+  fontSize: 28.0,
   fontWeight: FontWeight.bold,
 );
 
@@ -38,5 +38,5 @@ const kBMITextStyle = TextStyle(
 );
 
 const kBodyTextStyle = TextStyle(
-  fontSize: 22,
+  fontSize: 28,
 );
